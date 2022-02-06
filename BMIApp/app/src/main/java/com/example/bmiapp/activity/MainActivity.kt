@@ -1,4 +1,4 @@
-package com.example.bmiapp
+package com.example.bmiapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.text.Editable
 import android.widget.Button
 import com.example.bmiapp.databinding.ActivityMainBinding
 import android.text.TextWatcher
+import com.example.bmiapp.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
