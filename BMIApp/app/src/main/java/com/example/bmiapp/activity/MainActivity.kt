@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val measurementButton: Button =findViewById(R.id.measurementButton)
         val resetButton: Button =findViewById(R.id.resetButton)
+
         measurementButton.isEnabled = false
         resetButton.isEnabled = false
 
@@ -41,11 +42,11 @@ class MainActivity : AppCompatActivity() {
                 height = binding.heightEditTextNumber.text.toString()
                 heightMatched = regex.containsMatchIn(height)
 
+                //入力欄が記号のみだと測定ボタンを押せないようにする。
                 measurementButton.isEnabled = heightMatched == weightMatched
 
-                if (height == "" && weight == "") {
-                    measurementButton.isEnabled = false
-                } else if (height == "" || weight == "") {
+                //身長体重両方入力されていないと測定ボタンを押せないようにする。
+                if (height == "" || weight == "") {
                     measurementButton.isEnabled = false
                 }
 
@@ -65,11 +66,11 @@ class MainActivity : AppCompatActivity() {
                 val regex = Regex(pattern = "[\\d]")
                 weightMatched = regex.containsMatchIn(weight)
 
+                //入力欄が記号のみだと測定ボタンを押せないようにする。
                 measurementButton.isEnabled = heightMatched == weightMatched
 
-                if (height == "" && weight == "") {
-                    measurementButton.isEnabled = false
-                } else if (height == "" || weight == "") {
+                //身長体重両方入力されていないと測定ボタンを押せないようにする。
+                if (height == "" || weight == "") {
                     measurementButton.isEnabled = false
                 }
 
