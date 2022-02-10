@@ -51,7 +51,8 @@
             android:inputType="numberDecimal"
             android:textSize="30dp"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:maxLength="4"/>
 
     </LinearLayout>
 
@@ -83,7 +84,8 @@
             android:inputType="numberDecimal"
             android:textSize="30dp"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:maxLength="5"/>
 
     </LinearLayout>
 
