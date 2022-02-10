@@ -1,5 +1,6 @@
 package com.example.bmiapp.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -7,19 +8,20 @@ import android.widget.Button
 import com.example.bmiapp.databinding.ActivityMainBinding
 import android.text.TextWatcher
 import com.example.bmiapp.R
+import model.BmiCalculation
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var height = ""
-    private var weight = ""
+    var height = ""
+    var weight = ""
     private var heightMatched = false
     private var weightMatched = false
+    var bmiCalculation = BmiCalculation()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        var view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val measurementButton: Button =findViewById(R.id.measurementButton)
         val resetButton: Button =findViewById(R.id.resetButton)
@@ -58,7 +60,14 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.measurementButton.setOnClickListener {
+            val height = height.toDouble()
+            val weight = weight.toDouble()
+            val bmiCalculation = bmiCalculation.calculate(height,weight )
+            val intent = Intent(this, ResultActivity::class.java)
 
+            intent.putExtra("BMI",bmiCalculation.bmi)
+            intent.putExtra("BODY_TYPE",bmiCalculation.bodyType)
+            startActivity(intent)
         }
     }
 }

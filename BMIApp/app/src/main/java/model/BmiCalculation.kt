@@ -1,10 +1,12 @@
 package model
 
+import kotlin.math.pow
+
+
 class BmiCalculation {
-    fun caluculate(height: Int,weight: Int): BmiInfo{
-        val height = height / 100
+    fun calculate(height: Double, weight: Double): BmiInfo {
         var bodyType = ""
-        val bmi = weight / (height * 2)
+        val bmi = weight / (height / 100).toDouble().pow(2.0);
 
         bodyType = if (bmi < 18.5) {
             "痩せ型"

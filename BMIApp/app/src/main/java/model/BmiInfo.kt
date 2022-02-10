@@ -1,3 +1,3 @@
 package model
 
-data class BmiInfo (var bmi: Int, var bodyType: String)
+data class BmiInfo (var bmi: Double, var bodyType: String)
