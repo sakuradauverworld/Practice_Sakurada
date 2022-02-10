@@ -14,15 +14,15 @@
         android:layout_marginTop="16dp"
         android:text="BMI詳細"
         android:textColor="@color/white"
-        android:textSize="36dp"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/height"
-        android:layout_width="220dp"
-        android:layout_height="120dp"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
         android:layout_marginTop="80dp"
         android:orientation="vertical"
         android:layout_marginBottom="60dp"
@@ -36,17 +36,19 @@
             android:layout_height="wrap_content"
             android:text="あなたのBMI"
             android:textColor="@color/white"
-            android:textSize="24dp"
+            android:textSize="40dp"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/bmi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="numberDecimal"
             android:background="@color/white"
             android:text="17.6"
+            android:textSize="45dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textAlignment="center"/>
 
@@ -54,9 +56,11 @@
             android:id="@+id/bodyType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="numberDecimal"
             android:background="@color/white"
+            android:textSize="45dp"
             android:text="痩せ型"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textAlignment="center"/>
@@ -68,6 +72,8 @@
         android:layout_width="400dp"
         android:layout_height="120dp"
         android:orientation="vertical"
+        android:background="@drawable/border"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="24dp"
             android:textAlignment="center"/>
 
     </LinearLayout>
@@ -89,6 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/button_design"
         android:text="戻る"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

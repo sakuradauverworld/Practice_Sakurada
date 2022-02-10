@@ -10,7 +10,7 @@ import android.text.TextWatcher
 import com.example.bmiapp.R
 import model.BmiCalculation
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var height = ""
     var weight = ""
