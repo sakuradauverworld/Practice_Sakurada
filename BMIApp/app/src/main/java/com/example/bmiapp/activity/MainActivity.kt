@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var height = ""
     var weight = ""
-    private var heightMatched = false
+    private var heightMatched = true
     private var weightMatched = false
     var bmiCalculation = BmiCalculation()
 
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val measurementButton: Button =findViewById(R.id.measurementButton)
         val resetButton: Button =findViewById(R.id.resetButton)
         measurementButton.isEnabled = false
+        resetButton.isEnabled = false
 
         binding.heightEditTextNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -35,11 +36,20 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                height = binding.heightEditTextNumber.text.toString()
                 val regex = Regex(pattern = "[\\d]")
+
+                height = binding.heightEditTextNumber.text.toString()
                 heightMatched = regex.containsMatchIn(height)
 
                 measurementButton.isEnabled = heightMatched == weightMatched
+
+                if (height == "" && weight == "") {
+                    measurementButton.isEnabled = false
+                } else if (height == "" || weight == "") {
+                    measurementButton.isEnabled = false
+                }
+
+                resetButton.isEnabled = !(height == "" && weight == "")
             }
         })
 
@@ -56,6 +66,14 @@ class MainActivity : AppCompatActivity() {
                 weightMatched = regex.containsMatchIn(weight)
 
                 measurementButton.isEnabled = heightMatched == weightMatched
+
+                if (height == "" && weight == "") {
+                    measurementButton.isEnabled = false
+                } else if (height == "" || weight == "") {
+                    measurementButton.isEnabled = false
+                }
+
+                resetButton.isEnabled = !(height == "" && weight == "")
             }
         })
 
@@ -73,6 +91,8 @@ class MainActivity : AppCompatActivity() {
         binding.resetButton.setOnClickListener {
             binding.heightEditTextNumber.text = null
             binding.weightEditTextNumber.text = null
+
+            measurementButton.isEnabled = false
         }
     }
 }
