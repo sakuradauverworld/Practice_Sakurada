@@ -69,5 +69,10 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("BODY_TYPE",bmiCalculation.bodyType)
             startActivity(intent)
         }
+
+        binding.resetButton.setOnClickListener {
+            binding.heightEditTextNumber.text = null
+            binding.weightEditTextNumber.text = null
+        }
     }
 }
