@@ -1,5 +1,6 @@
 package com.example.bmiapp.activity
 
+import android.R.attr
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +10,15 @@ import com.example.bmiapp.databinding.ActivityMainBinding
 import android.text.TextWatcher
 import com.example.bmiapp.R
 import model.BmiCalculation
+import model.BmiInfo
+import android.R.attr.data
+import java.io.Serializable
+
 
 open class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    var height = ""
-    var weight = ""
+    private var height = ""
+    private var weight = ""
     private var heightMatched = true
     private var weightMatched = false
     var bmiCalculation = BmiCalculation()
@@ -23,11 +28,8 @@ open class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val measurementButton: Button =findViewById(R.id.measurementButton)
-        val resetButton: Button =findViewById(R.id.resetButton)
-
-        measurementButton.isEnabled = false
-        resetButton.isEnabled = false
+        binding.measurementButton.isEnabled = false
+        binding.resetButton.isEnabled = false
 
         binding.heightEditTextNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -43,14 +45,14 @@ open class MainActivity : AppCompatActivity() {
                 heightMatched = regex.containsMatchIn(height)
 
                 //入力欄が記号のみだと測定ボタンを押せないようにする。
-                measurementButton.isEnabled = heightMatched == weightMatched
+                binding.measurementButton.isEnabled = heightMatched == weightMatched
 
                 //身長体重両方入力されていないと測定ボタンを押せないようにする。
                 if (height == "" || weight == "") {
-                    measurementButton.isEnabled = false
+                    binding.measurementButton.isEnabled = false
                 }
 
-                resetButton.isEnabled = !(height == "" && weight == "")
+                binding.resetButton.isEnabled = !(height == "" && weight == "")
             }
         })
 
@@ -67,25 +69,25 @@ open class MainActivity : AppCompatActivity() {
                 weightMatched = regex.containsMatchIn(weight)
 
                 //入力欄が記号のみだと測定ボタンを押せないようにする。
-                measurementButton.isEnabled = heightMatched == weightMatched
+                binding.measurementButton.isEnabled = heightMatched == weightMatched
 
                 //身長体重両方入力されていないと測定ボタンを押せないようにする。
                 if (height == "" || weight == "") {
-                    measurementButton.isEnabled = false
+                    binding.measurementButton.isEnabled = false
                 }
 
-                resetButton.isEnabled = !(height == "" && weight == "")
+                binding.resetButton.isEnabled = !(height == "" && weight == "")
             }
         })
 
         binding.measurementButton.setOnClickListener {
             val height = height.toDouble()
             val weight = weight.toDouble()
-            val bmiCalculation = bmiCalculation.calculate(height,weight )
+            val bmiInfo = bmiCalculation.calculate(height,weight )
             val intent = Intent(this, ResultActivity::class.java)
 
-            intent.putExtra("BMI",bmiCalculation.bmi)
-            intent.putExtra("BODY_TYPE",bmiCalculation.bodyType)
+            intent.putExtra("BMI_INFO",bmiInfo as Serializable)
+
             startActivity(intent)
         }
 
@@ -93,7 +95,8 @@ open class MainActivity : AppCompatActivity() {
             binding.heightEditTextNumber.text = null
             binding.weightEditTextNumber.text = null
 
-            measurementButton.isEnabled = false
+            binding.measurementButton.isEnabled = false
         }
     }
 }
+

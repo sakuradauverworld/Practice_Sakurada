@@ -1,5 +1,6 @@
 package com.example.bmiapp.activity
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,16 +17,20 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bmi = intent.getDoubleExtra("BMI",0.0)
-        val bodyType = intent.getStringExtra("BODY_TYPE")
+        val bmiInfo = intent.getSerializableExtra("BMI_INFO")
 
-        binding.bmi.text = "%.1f".format(bmi).toString()
-        binding.bodyType.text = bodyType
+        binding.bmi.text = "%.1f".format(bmiInfo).toString()
 
-        when (bodyType) {
-            "痩せ型" -> binding.bmiDescription.text = "あなたは痩せ気味な体重です。\n現状の体重を増やし健康的な体型\n目指してください。"
-            "標準"  -> binding.bmiDescription.text = "あなたは標準的な体重です。\n現状の体重を維持しましょう。"
-            "肥満"  -> binding.bmiDescription.text = "あなたは肥満です。\n現状の体重を減らし健康的な体型を\n目指してください。"
+        when (bmiInfo) {
+            "LEPTOSOMACTIC" -> binding.bodyType.text = "痩せ型"
+            "STANDARD"  -> binding.bodyType.text = "標準"
+            "OBESITY"  -> binding.bodyType.text = "肥満"
+        }
+
+        when (bmiInfo) {
+            "LEPTOSOMACTIC" -> binding.bmiDescription.text = "あなたは痩せ気味な体重です。\n現状の体重を増やし健康的な体型\n目指してください。"
+            "STANDARD"  -> binding.bmiDescription.text = "あなたは標準的な体重です。\n現状の体重を維持しましょう。"
+            "OBESITY"  -> binding.bmiDescription.text = "あなたは肥満です。\n現状の体重を減らし健康的な体型を\n目指してください。"
         }
 
         binding.backButton.setOnClickListener {
