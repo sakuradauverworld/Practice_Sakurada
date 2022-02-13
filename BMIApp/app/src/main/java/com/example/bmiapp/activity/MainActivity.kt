@@ -16,7 +16,7 @@ open class MainActivity : AppCompatActivity() {
     private var weight = ""
     private var heightMatched = true
     private var weightMatched = false
-    private var bmiCalculation = BmiCalculation()
+    private val bmiCalculation = BmiCalculation()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
