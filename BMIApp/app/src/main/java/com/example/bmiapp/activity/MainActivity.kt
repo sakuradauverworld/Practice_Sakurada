@@ -1,17 +1,12 @@
 package com.example.bmiapp.activity
 
-import android.R.attr
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.widget.Button
 import com.example.bmiapp.databinding.ActivityMainBinding
 import android.text.TextWatcher
-import com.example.bmiapp.R
 import model.BmiCalculation
-import model.BmiInfo
-import android.R.attr.data
 import java.io.Serializable
 
 
@@ -21,7 +16,7 @@ open class MainActivity : AppCompatActivity() {
     private var weight = ""
     private var heightMatched = true
     private var weightMatched = false
-    var bmiCalculation = BmiCalculation()
+    private var bmiCalculation = BmiCalculation()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
