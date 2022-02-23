@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fa/values-fa.xml",
+            "outputFile": "/Users/sakuradadaisuke/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fa/values-fa.xml",
             "map": [
                 {
                     "source": "/Users/sakuradadaisuke/.gradle/caches/transforms-3/0eacdda7c76bebb119bf64fe212bb3e8/transformed/material-1.5.0/res/values-fa/values-fa.xml",

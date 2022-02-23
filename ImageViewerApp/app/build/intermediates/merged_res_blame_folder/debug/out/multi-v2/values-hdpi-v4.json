@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "/Users/sakuradadaisuke/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
                     "source": "/Users/sakuradadaisuke/.gradle/caches/transforms-3/aaef6acb8a42f380bb4a1b4e810204c5/transformed/appcompat-1.4.1/res/values-hdpi-v4/values-hdpi-v4.xml",

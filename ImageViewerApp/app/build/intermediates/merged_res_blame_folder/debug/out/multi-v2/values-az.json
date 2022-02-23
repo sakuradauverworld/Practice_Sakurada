@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml",
+            "outputFile": "/Users/sakuradadaisuke/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml",
             "map": [
                 {
                     "source": "/Users/sakuradadaisuke/.gradle/caches/transforms-3/f151290c6ded99e73cc30cce4233ae32/transformed/core-1.7.0/res/values-az/values-az.xml",
