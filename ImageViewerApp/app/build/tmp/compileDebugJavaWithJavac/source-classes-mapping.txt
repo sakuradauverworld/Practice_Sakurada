@@ -1,0 +1,6 @@
+com/example/imageviewerapp/databinding/ActivityMainBinding.java
+ com.example.imageviewerapp.databinding.ActivityMainBinding
+com/example/imageviewerapp/databinding/FragmentImageBinding.java
+ com.example.imageviewerapp.databinding.FragmentImageBinding
+com/example/imageviewerapp/BuildConfig.java
+ com.example.imageviewerapp.BuildConfig

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_image.xml",
+        "source": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/src/main/res/layout/fragment_image.xml"
+    },
+    {
+        "merged": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/sakuradadaisuke/AndroidStudioProjects/ImageViewerApp/app/src/main/res/layout/activity_main.xml"
+    }
+]
