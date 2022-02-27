@@ -16,14 +16,14 @@
         android:maxLength="20"
         android:maxLines="1"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/japanese"
+        app:layout_constraintBottom_toTopOf="@+id/japaneseInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <EditText
-        android:id="@+id/japanese"
+        android:id="@+id/japaneseInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="日本語を入力してください"
