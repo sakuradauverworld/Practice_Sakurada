@@ -18,5 +18,11 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        binding.wordAdditionButton.setOnClickListener {
+            val intent = Intent(this, WordAdditionActivity::class.java)
+
+            startActivity(intent)
+        }
     }
 }
