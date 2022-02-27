@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".WordAdditionActivity">
 
+    <EditText
+        android:id="@+id/englishInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="英単語を入力してください"
+        android:layout_marginTop="100dp"
+        android:textSize="30dp"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/japanese"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/japanese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="日本語を入力してください"
+        android:textSize="30dp"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="150dp"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        app:layout_constraintBottom_toTopOf="@+id/mainBackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="200dp"/>
+
+    <Button
+        android:id="@+id/mainBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="戻る"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
