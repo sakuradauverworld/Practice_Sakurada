@@ -1,11 +1,22 @@
 package com.example.tangoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tangoapp.databinding.ActivityWordAdditionBinding
+
 
 class WordAdditionActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWordAdditionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_word_addition)
+        binding = ActivityWordAdditionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.mainBackButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+
+            startActivity(intent)
+        }
     }
 }
