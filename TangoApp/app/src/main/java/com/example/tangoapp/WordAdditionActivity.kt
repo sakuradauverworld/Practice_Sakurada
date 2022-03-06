@@ -93,5 +93,11 @@ class WordAdditionActivity : AppCompatActivity() {
             putString("englishWordList", jsonEnglishWordList.toString())
             putString("japaneseWordList", jsonJapaneseWordList.toString())
         }
+
+        val a = SaveConfirmationFragment()
+        a.show(supportFragmentManager, "missiles")
+
+        binding.englishInput.text = null
+        binding.japaneseInput.text = null
     }
 }
