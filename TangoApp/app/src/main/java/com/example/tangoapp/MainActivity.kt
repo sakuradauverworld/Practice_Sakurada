@@ -3,6 +3,7 @@ package com.example.tangoapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityMainBinding
 
@@ -14,12 +15,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-
         binding.learningStartButton.setOnClickListener {
             val intent = Intent(this, LearningActivity::class.java)
 
-            startActivity(intent)
+            val pref = PreferenceManager.getDefaultSharedPreferences(this)
+            val prefEnglishWordList = pref.getString("englishWordList", "")
+
+            //英単語が共有プリファレンスに1つも登録されていなかったらアラートダイアログを表示して登録していたら学習画面に遷移する。
+            if (prefEnglishWordList == "") {
+                val alert = LearningStartAlertFragment()
+                alert.show(supportFragmentManager, "")
+            } else {
+                startActivity(intent)
+            }
         }
 
         binding.wordAdditionButton.setOnClickListener {

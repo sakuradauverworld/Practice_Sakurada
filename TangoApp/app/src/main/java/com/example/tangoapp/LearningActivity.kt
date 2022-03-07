@@ -15,12 +15,16 @@ class LearningActivity : AppCompatActivity() {
         binding = ActivityLearningBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //共有プリファレンスから英単語と日本語を持ってくる。
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val prefEnglishWordList = pref.getString("englishWordList", "")
         val prefJapaneseWordList = pref.getString("japaneseWordList", "")
+
+        //空のリストを生成。
         var englishWordList = emptyArray<String>()
         var japaneseWordList = emptyArray<String>()
 
+        //共有プリファレンスから取ってきたデータをJson形式に変換してから上記のリストに入れていく。
         if (prefEnglishWordList != "") {
             val json = JSONArray(prefEnglishWordList)
             for (i in 0 until json.length()) {
@@ -35,15 +39,14 @@ class LearningActivity : AppCompatActivity() {
             }
         }
 
-        val num = Random().nextInt(englishWordList.count())
-        var indexNumber = num
-
-        binding.englishTextView.text = englishWordList[num]
+        //最初に遷移した時の英単語をランダムに決めて表示する。
+        var indexNumber = Random().nextInt(englishWordList.count())
+        binding.englishTextView.text = englishWordList[indexNumber]
 
         binding.nextButton.setOnClickListener {
-            val num = Random().nextInt(englishWordList.count())
-            indexNumber = num
-            binding.englishTextView.text = englishWordList[num]
+            indexNumber = Random().nextInt(englishWordList.count())
+
+            binding.englishTextView.text = englishWordList[indexNumber]
             binding.japaneseTextView.text = null
         }
 
