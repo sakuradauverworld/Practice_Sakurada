@@ -61,10 +61,14 @@ class WordAdditionActivity : AppCompatActivity() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val prefEnglishWordList = pref.getString("englishWordList", "")
         val prefJapaneseWordList = pref.getString("japaneseWordList", "")
+        var jsonEnglishWordList = JSONArray(emptyArray<String>())
+        var jsonJapaneseWordList = JSONArray(emptyArray<String>())
 
         //共有プリファレンスから取得した単語のリストをJson形式に変換
-        val jsonEnglishWordList = JSONArray(prefEnglishWordList)
-        val jsonJapaneseWordList = JSONArray(prefJapaneseWordList)
+        if (prefEnglishWordList != "") {
+            jsonEnglishWordList = JSONArray(prefEnglishWordList)
+            jsonJapaneseWordList = JSONArray(prefJapaneseWordList)
+        }
 
         //単語の追加
         jsonEnglishWordList.put(englishWord)
