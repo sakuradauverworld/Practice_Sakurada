@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityWordAdditionBinding
@@ -79,8 +80,10 @@ class WordAdditionActivity : AppCompatActivity() {
             putString("japaneseWordList", jsonJapaneseWordList.toString())
         }
 
-        val alert = SaveConfirmationFragment()
-        alert.show(supportFragmentManager, "")
+        AlertDialog.Builder(this) // FragmentではActivityを取得して生成
+            .setMessage("保存しました。")
+            .setPositiveButton("OK", { dialog, which -> })
+            .show()
 
         binding.englishInput.text = null
         binding.japaneseInput.text = null
