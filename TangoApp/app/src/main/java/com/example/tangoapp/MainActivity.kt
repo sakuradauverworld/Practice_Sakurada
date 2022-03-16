@@ -18,12 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.learningStartButton.setOnClickListener {
             val intent = Intent(this, LearningActivity::class.java)
-
             val pref = PreferenceManager.getDefaultSharedPreferences(this)
-            val prefEnglishWordList = pref.getString("englishWordList", "")
+            val prefWordList = pref.getString("wordList", "")
 
-            //英単語が共有プリファレンスに1つも登録されていなかったらアラートダイアログを表示して登録していたら学習画面に遷移する。
-            if (prefEnglishWordList == "") {
+            //単語が共有プリファレンスに1つも登録されていなかったらアラートダイアログを表示して登録していたら学習画面に遷移する。
+            if (prefWordList == "") {
                 AlertDialog.Builder(this) // FragmentではActivityを取得して生成
                     .setMessage("登録された単語がありません。\n" + "登録してください。")
                     .setPositiveButton("OK", { dialog, which -> })

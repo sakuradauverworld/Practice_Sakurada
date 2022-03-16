@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityLearningBinding
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
+import org.json.JSONObject
 import java.util.*
 
 class LearningActivity : AppCompatActivity() {
@@ -15,43 +19,38 @@ class LearningActivity : AppCompatActivity() {
         binding = ActivityLearningBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //共有プリファレンスから英単語と日本語を持ってくる。
+        //共有プリファレンスから単語を持ってくる。
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val prefEnglishWordList = pref.getString("englishWordList", "")
-        val prefJapaneseWordList = pref.getString("japaneseWordList", "")
+        val prefWordList = pref.getString("wordList", "")
 
         //空のリストを生成。
-        var englishWordList = emptyArray<String>()
-        var japaneseWordList = emptyArray<String>()
+        var wordList = mutableListOf<Word>()
 
         //共有プリファレンスから取ってきたデータをJson形式に変換してから上記のリストに入れていく。
-        if (prefEnglishWordList != "") {
-            val json = JSONArray(prefEnglishWordList)
-            for (i in 0 until json.length()) {
-                englishWordList += json.getString(i)
-            }
+        val jsonArray = JSONArray(prefWordList)
+
+        for (i in 0 until jsonArray.length()) {
+            var jsonWord = jsonArray.getJSONObject(i)
+            var word = Word.makeWordFromJson(jsonWord)
+            wordList.add(word)
         }
 
-        if (prefJapaneseWordList != "") {
-            val json = JSONArray(prefJapaneseWordList)
-            for (i in 0 until json.length()) {
-                japaneseWordList += json.getString(i)
-            }
-        }
+        //最初に遷移した時に単語をランダムに決めて表示する。
+        var indexNumber = Random().nextInt(wordList.count())
+        var word = wordList[indexNumber]
 
-        //最初に遷移した時の英単語をランダムに決めて表示する。
-        var indexNumber = Random().nextInt(englishWordList.count())
-        binding.englishTextView.text = englishWordList[indexNumber]
+        binding.englishTextView.text = word.englishWord
 
         binding.nextButton.setOnClickListener {
-            indexNumber = Random().nextInt(englishWordList.count())
+            indexNumber = Random().nextInt(wordList.count())
+            word = wordList[indexNumber]
 
-            binding.englishTextView.text = englishWordList[indexNumber]
+            binding.englishTextView.text = word.englishWord
             binding.japaneseTextView.text = null
         }
 
         binding.japaneseButton.setOnClickListener {
-            binding.japaneseTextView.text = japaneseWordList[indexNumber]
+            binding.japaneseTextView.text = word.japaneseWord
         }
 
     }

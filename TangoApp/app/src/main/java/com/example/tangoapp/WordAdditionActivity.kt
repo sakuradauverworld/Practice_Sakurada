@@ -10,6 +10,11 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityWordAdditionBinding
 import org.json.JSONArray
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+import org.json.JSONObject
+import java.util.ArrayList
+
 
 class WordAdditionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWordAdditionBinding
@@ -60,24 +65,27 @@ class WordAdditionActivity : AppCompatActivity() {
 
     private fun saveData(englishWord: String, japaneseWord: String) {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val prefEnglishWordList = pref.getString("englishWordList", "")
-        val prefJapaneseWordList = pref.getString("japaneseWordList", "")
-        var jsonEnglishWordList = JSONArray(emptyArray<String>())
-        var jsonJapaneseWordList = JSONArray(emptyArray<String>())
+        val prefWordList = pref.getString("wordList", "")
+        val word = Word(englishWord, japaneseWord )
+        var wordList = mutableListOf<Word>()
 
         //共有プリファレンスから取得した単語のリストをJson形式に変換
-        if (prefEnglishWordList != "") {
-            jsonEnglishWordList = JSONArray(prefEnglishWordList)
-            jsonJapaneseWordList = JSONArray(prefJapaneseWordList)
+        if (prefWordList != "") {
+            val jsonArray = JSONArray(prefWordList)
+            for (i in 0 until jsonArray.length()) {
+                var jsonWord = jsonArray.getJSONObject(i)
+                var word = Word.makeWordFromJson(jsonWord)
+                wordList.add(word)
+            }
         }
 
-        //単語の追加
-        jsonEnglishWordList.put(englishWord)
-        jsonJapaneseWordList.put(japaneseWord)
+        wordList.add(word)
+
+        val gson = Gson()
+        val jsonArray = gson.toJson(wordList)
 
         pref.edit {
-            putString("englishWordList", jsonEnglishWordList.toString())
-            putString("japaneseWordList", jsonJapaneseWordList.toString())
+            putString("wordList", jsonArray.toString())
         }
 
         AlertDialog.Builder(this) // FragmentではActivityを取得して生成
