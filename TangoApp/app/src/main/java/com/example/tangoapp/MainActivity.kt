@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityMainBinding
 

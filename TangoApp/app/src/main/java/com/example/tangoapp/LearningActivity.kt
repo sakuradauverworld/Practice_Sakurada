@@ -4,11 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityLearningBinding
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
-import org.json.JSONObject
 import java.util.*
 
 class LearningActivity : AppCompatActivity() {
@@ -31,7 +27,7 @@ class LearningActivity : AppCompatActivity() {
 
         for (i in 0 until jsonArray.length()) {
             var jsonWord = jsonArray.getJSONObject(i)
-            var word = Word.makeWordFromJson(jsonWord)
+            var word = Word(jsonWord.getString("englishWord"),jsonWord.getString("japaneseWord"))
             wordList.add(word)
         }
 

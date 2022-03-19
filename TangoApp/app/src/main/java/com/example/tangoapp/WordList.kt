@@ -3,4 +3,6 @@ package com.example.tangoapp
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Word(val englishWord: String,val japaneseWord: String)
+data class WordList(val word: Word) {
+     var wordList = mutableListOf(word)
+}

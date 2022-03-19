@@ -9,12 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.example.tangoapp.databinding.ActivityWordAdditionBinding
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.json.JSONArray
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import org.json.JSONObject
-import java.util.ArrayList
-
 
 class WordAdditionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWordAdditionBinding
@@ -67,25 +64,22 @@ class WordAdditionActivity : AppCompatActivity() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val prefWordList = pref.getString("wordList", "")
         val word = Word(englishWord, japaneseWord )
-        var wordList = mutableListOf<Word>()
+        var wordList = WordList(word)
 
         //共有プリファレンスから取得した単語のリストをJson形式に変換
         if (prefWordList != "") {
             val jsonArray = JSONArray(prefWordList)
             for (i in 0 until jsonArray.length()) {
                 var jsonWord = jsonArray.getJSONObject(i)
-                var word = Word.makeWordFromJson(jsonWord)
-                wordList.add(word)
+                var word = Word(jsonWord.getString("englishWord"),jsonWord.getString("japaneseWord"))
+                wordList.wordList.add(word)
             }
         }
 
-        wordList.add(word)
-
-        val gson = Gson()
-        val jsonArray = gson.toJson(wordList)
+        val jsonArray = Json.encodeToString(wordList.wordList)
 
         pref.edit {
-            putString("wordList", jsonArray.toString())
+            putString("wordList", jsonArray)
         }
 
         AlertDialog.Builder(this) // FragmentではActivityを取得して生成
